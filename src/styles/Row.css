@@ -1,0 +1,95 @@
+.row {
+    display: flex;
+    flex-direction: column;
+    margin: 40px 0 0px 20px;
+}
+
+.row h2 {
+    margin-bottom: 0.3rem;
+    font-weight: 400;
+    font-size: 28px;
+}
+
+.card-container {
+    overflow-y: hidden;
+    overflow-x: scroll;
+    display: flex;
+    position: relative;
+    gap: 8px;
+    scroll-behavior: smooth;
+}
+
+.card-container::-webkit-scrollbar {
+    display: none;
+}
+
+.btn__left {
+    position: absolute;
+    left: 1rem;
+    margin-top: 60px;
+    margin-left: 5px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 65px;
+    height: 150px;
+    z-index: 1;
+    font-size: 15px;
+    display: none;
+}
+
+.btn__right {
+    position: absolute;
+    right: 1rem;
+    margin-top: 60px;
+    margin-right: -10px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 65px;
+    height: 150px;
+    font-size: 15px;
+    z-index: 1;
+    display: none;
+}
+
+@media screen and (min-width: 800px) {
+    .row {
+        margin: 50px 0 70px 20px;
+    }
+
+    .row h2 {
+        font-size: 32px;
+    }
+
+    .card-container {
+        gap: 16px;
+    }
+
+    .btn__left {
+        position: absolute;
+        left: 1rem;
+        margin-top: 195px;
+        margin-left: 10px;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.65);
+        width: 65px;
+        height: 65px;
+        border: none;
+        z-index: 1;
+        font-size: 35px;
+        display: block;
+    }
+
+    .btn__right {
+        position: absolute;
+        right: 1rem;
+        margin-top: 195px;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.65);
+        width: 65px;
+        height: 65px;
+        border: none;
+        font-size: 35px;
+        z-index: 1;
+        display: block;
+    }
+}

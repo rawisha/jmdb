@@ -1,0 +1,31 @@
+.searchbar-wrapper {
+  width: 100%; 
+  display: flex; 
+  border-bottom: 1px solid white;
+}
+
+.searchfield {
+  height: 30px;
+  background-color: transparent;
+  border: 0;
+  outline: none;
+  text-indent: 10px;
+  color: white;
+  font-size: 15px;
+  letter-spacing: 1.5px;
+}
+
+::placeholder {
+  color: white;
+}
+
+.fa-search {
+  font-style: normal;
+}
+
+@media screen and (min-width: 800px) {
+  .searchbar-wrapper {
+    margin-left: 24px;
+    width: 350px;
+  }
+}

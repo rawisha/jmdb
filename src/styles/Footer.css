@@ -1,0 +1,25 @@
+.footer-section {
+    bottom: 0;
+    background-color: #111;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    width: 100%;
+    font-size: 0.7rem;
+}
+
+.footer-text {
+    color: white;
+}
+
+@media screen and (min-width: 800px) {
+    .footer-section {
+        bottom: 0;
+        background-color: #111;
+        display: flex;
+        justify-content: center;
+        padding: 10px;
+        width: 100%;
+        font-size: 1rem;
+    }
+}

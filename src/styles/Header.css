@@ -1,0 +1,78 @@
+.header {
+  min-height: 8vh;
+  width: 100%;
+  position: relative;
+  padding: 16px; 
+  background-color: rgba(0, 0, 0, 0.712);
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+.header h1 {
+  position: absolute;
+  display: flex;
+  align-self: flex-start;
+  gap: 8px;
+  margin: 0;
+  font-weight: 500;
+  font-size: 26px;
+  font-family: "Courier New", Courier, monospace;
+  cursor: pointer;
+}
+
+.header i {
+  cursor: pointer;
+}
+
+.header-item-container {
+  width: 100%; 
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap-reverse;
+  gap: 28px;
+  margin: 0 0 0 0; 
+}
+
+.header-button-container {
+  display: flex;
+  gap: 20px;
+}
+
+.header-item {
+  height: 30px;
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-weight: 400;
+  font-size: 15px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 800px) {
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .header h1 {
+    margin: 0 0 0 24px;
+    font-size: 40px;
+    position: static;
+  }
+
+  .header-item-container {
+    width: auto;
+    align-self: flex-end;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin: 0 24px;
+  }
+
+  .header-button-container {
+    margin-left: 24px;
+  }
+}

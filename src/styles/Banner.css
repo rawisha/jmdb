@@ -1,0 +1,69 @@
+.banner {
+  object-fit: contain;
+  height: 82.5vh;
+  display: flex;
+  align-items: center;
+}
+
+.banner-contents {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  padding-top: 150px;
+}
+
+.banner-title {
+  font-size: 3rem;
+  font-weight: 500;
+  padding-bottom: 0.3rem;
+}
+
+.banner-overview {
+  line-height: 1.3;
+  font-weight: 500;
+  padding-top: 1rem;
+  font-size: 1.2rem;
+  max-width: 21rem;
+  text-align: left;
+}
+
+.banner-information-button {
+  display: flex;
+  gap: 16px;
+  margin: 24px 16px 0 0;
+}
+
+.banner-button {
+  cursor: pointer;
+  border: none;
+  font-weight: 400;
+  color: #fff;
+  background-color: white;
+  color: black;
+  font-weight: 500;
+  padding: 0.7rem 2rem;
+  border-radius: 18px;
+  transition: 0.3s;
+}
+
+.banner-button i {
+  margin-right: 5px;
+}
+
+.youtubeWindow {
+  display: none;
+}
+.player__container {
+  padding-top: 20px;
+
+  margin-bottom: 70px;
+}
+@media screen and (min-width: 800px) {
+  .banner-contents {
+    margin-left: 40px;
+  }
+  .banner-button:hover {
+    background-color: rgb(177, 6, 6);
+    color: white;
+  }
+}

@@ -1,0 +1,72 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 140px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+}
+
+.card-image-container {
+  max-width: 140px;
+  height: 201px;
+  position: relative;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  z-index: -1;
+}
+
+.favorite {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-size: 24px;
+}
+
+.card-text-container {
+  display: none;
+}
+
+.card-text-title {
+  padding: 8px 8px 0 8px;
+  font-weight: 400;
+}
+
+.card-text-dv {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 8px 8px 8px;
+}
+.card-text-dv h3 {
+  font-weight: 400;
+}
+#Star-logo {
+  color: yellow;
+  margin-left: 5px;
+}
+
+#heart {
+  cursor: pointer;
+}
+
+@media screen and (min-width: 800px) {
+  .card {
+    width: 250px;
+}
+
+.card-image-container {
+    max-width: 250px;
+    height: 322px;
+}
+
+.card-text-container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 100%;
+    height: 90px;
+}
+}
