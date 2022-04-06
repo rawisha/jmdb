@@ -158,17 +158,6 @@ export default function App() {
     },
   }
 
-  //**END OF LOCAL STORAGE, FAVORITE HANDLERS**
-
-//  //styr om vad det ska stå på play trailer knappen
-//   let playtext;
-//   if (trailerUrl === '') {
-//     playtext = 'Play trailer'
-//   } else {
-//     playtext = 'Close trailer'
-//   }
-
-
 
   //** MODALEN **
   //när vi kryssar modalen "nollställs" det som tidigare varit där

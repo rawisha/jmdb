@@ -110,6 +110,7 @@ const Banner = () => {
         };
     }
 
+    //timer för att den inte ska köras hela tiden
     function debounce(fn, ms) {
         let timer
         return _ => {
@@ -160,30 +161,6 @@ const Banner = () => {
         return () => window.removeEventListener("resize", debouncedHandleResize);
 
     }, [windowDimensions.width <= 680]);
-
-    //så den fetchar i interval
-    // useEffect(() => {
-    //     fetchData()
-    //     setInterval(() => {
-    //         fetchData()
-    //     }, 30000);
-    // }, []);
-
-    // //lägger in de tre prickarna när beskrivningen blir för lång
-    // const truncate = (str, n) => {
-    //     return str?.length > n ? str.substr(0, n - 1) + "..." : str;
-    // }
-
-    // //styr om vad det ska stå p play trailer knappen
-    // let playtext;
-    // if (trailerUrl === '') {
-    //     playtext = 'Play trailer'
-    // } else {
-    //     playtext = 'Close trailer'
-    // }
-
-    // //hjärtat fyllt eller ej. {fa ska alltid finnas. tomt hjärta eller fyllt hjärta beroende på om favStatus är true/false}
-    // let heartStatusClasses = classNames({ 'fa': true, 'fa-heart-o': !t, 'fa-heart': t, })
    
     return (
         <header className="banner"

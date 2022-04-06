@@ -1,6 +1,9 @@
 # Kommentarer om projektet
 
-Vi har under projektets gång gemensamt kodat via VS liveshare. ( FYLL PÅ!!!!!!!!!!!!!!!!!!!!!)
+Eftersom vi fick stora konflikter i slutskedet av projektet som vi inte lyckades lösa fick vi skapa ett nytt repo. Därav har vi inte pushat var för sig för att visa vem som skrivit vad utan allt är pushat samtidigt. Men såhär har vi jobbat:
+Vi har gemensamt kodat projektet via VS liveshare och vi har turats om med vem som skriver koden. Rawand har legat lite före oss andra i gruppen gällande kunskap/erfarenhet om React. Därför har han också haft en ledande roll och har tagit på sig ett större ansvar bl a när buggar skulle åtgärdas och tips om vad man faktiskt kan göra med React.
+
+
 
 
 
