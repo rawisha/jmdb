@@ -5,6 +5,7 @@ import NotFound from './components/NotFound';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from './components/Home';
 import Favorites from './components/Favorites';
+import Contact from './components/Contact';
 import Modal from 'react-modal';
 import classNames from 'classnames'
 import YouTube from 'react-youtube'
@@ -211,6 +212,7 @@ export default function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/favorites' element={<Favorites />} />
+          <Route path='/contact' element={<Contact />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
       </Router>

@@ -42,7 +42,7 @@ const Card = ({ movieData, removeOnly }) => {
         <div >
             <div className='card '>
                 <div className='card-image-container'>
-                    <img src={imgsrc} alt={movieData.name} className='card-image' onClick={() => favContext.handleModelClick(movieData)} />
+                    <img src={imgsrc} alt={"Movie & Tv show poster name" + movieData?.name || movieData?.title || movieData.original_name} className='card-image' onClick={() => favContext.handleModelClick(movieData)} />
                     <i id="heart" onClick={() => handleFavClick(movieData)} className={heartStatusClasses} aria-hidden="true"></i>
                 </div>
                 <div className='card-text-container' >

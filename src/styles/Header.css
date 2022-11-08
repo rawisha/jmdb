@@ -22,6 +22,9 @@
 
 .header i {
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .header-item-container {
