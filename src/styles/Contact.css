@@ -105,3 +105,14 @@ textarea::placeholder {
 form p {
   display: none;
 }
+
+.vid-Container {
+  margin-left: 150px;
+}
+
+.Container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}

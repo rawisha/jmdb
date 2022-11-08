@@ -4,6 +4,8 @@ import { FavContext } from '../App'
 import ResultCard from './ResultCard';
 import "../styles/Contact.css"
 import { useNavigate } from "react-router-dom";
+import video from '../video/video1.mp4'
+import cc from '../video/video1.vtt'
 function Contact() {
 
     const [results, setResults] = useState([]);
@@ -13,8 +15,16 @@ function Contact() {
    <Header results={results} setResults={setResults} />
    <div className='result-Container'>
         <ResultCard results={results} />
+    
     </div>
-           
+    <div className='Container'>
+        <div className='vid-Container'>
+        <video width="750" height="550" controls>
+        <source src={video} type="video/mp4"></source>
+        <track src={cc} kind="subtitles" srclang="sv" label="Svenska"></track>
+            Your browser does not support the video tag.
+        </video>
+        </div>      
     <div className='form--container'>
 
         <form>
@@ -48,6 +58,7 @@ function Contact() {
             
         </form>
 
+    </div>
     </div>
     </>
   )
