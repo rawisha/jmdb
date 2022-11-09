@@ -170,6 +170,7 @@ const Banner = () => {
                 backgroundPosition: "center center",
             }}
         >
+            <div className='banner-Background'>
             <div className="banner-contents">
                 <h2 className='banner-title'>{movie?.title || movie?.name || movie?.original_name || defaultMovie.name}</h2>
                 <p className="banner-overview">
@@ -182,6 +183,7 @@ const Banner = () => {
                 <div className="player__container">
                     <YouTube className={youtubeClassName} videoId={trailerUrl} opts={opt} />
                 </div>
+            </div>
             </div>
         </header>
     )

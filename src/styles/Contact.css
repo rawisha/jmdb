@@ -116,3 +116,13 @@ form p {
   justify-content: center;
   align-items: center;
 }
+
+.pTag {
+  font-size: 24px;
+}
+
+.pTag a{
+  text-decoration: none;
+  color: white;
+  text-decoration: underline;
+}

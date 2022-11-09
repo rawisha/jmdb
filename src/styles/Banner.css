@@ -46,6 +46,10 @@
   transition: 0.3s;
 }
 
+.banner-Background {
+  width: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
 .banner-button i {
   margin-right: 5px;
 }
