@@ -1,4 +1,4 @@
-import React, { useState, useContext,useEffect,useRef} from 'react'
+import React, { useState,useEffect } from 'react'
 import Header from './Header'
 import { FavContext } from '../App'
 import ResultCard from './ResultCard';
@@ -13,11 +13,9 @@ function Contact() {
     const [emailValue, setEmailValue] = useState("");
     const [messageValue, setMessageValue] = useState("");
     const [phoneValue, setPhoneValue] = useState("");
-    const name = useRef
-    
+
     useEffect(() => {
         if(nameValue || emailValue || messageValue || phoneValue !== ''){
-            console.log(nameValue)
             window.addEventListener("beforeunload", function (e) {
                 e.preventDefault()
                 var confirmationMessage = "\o/";
@@ -28,6 +26,8 @@ function Contact() {
         }
     },[nameValue,emailValue,messageValue,phoneValue])
    
+    const [ locationKeys, setLocationKeys ] = useState([])
+
 
   return (
     <>
