@@ -13,7 +13,7 @@ function Contact() {
     const [emailValue, setEmailValue] = useState("");
     const [messageValue, setMessageValue] = useState("");
     const [phoneValue, setPhoneValue] = useState("");
-
+    let navigate = useNavigate();
     useEffect(() => {
         if(nameValue || emailValue || messageValue || phoneValue !== ''){
             window.addEventListener("beforeunload", function (e) {
@@ -39,6 +39,11 @@ function Contact() {
     <div className='Container'>
     
         <div className='vid-Container'>
+        <div className='breadcrum'>
+        <div className='breadcrum2'>
+                <button className='header-item' onClick={() => { navigate("/") }}> -> HOME</button> <p> / CONTACT</p>
+        </div>
+        </div>
         <p className='pTag'>To view more videos like this, <a href="https://www.youtube.com/watch?v=VKuZrI25opU"><span className='link'>click here</span></a></p>
         <video width="750" height="550" controls>
         <source src={video} type="video/mp4"></source>
