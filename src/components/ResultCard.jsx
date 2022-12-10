@@ -4,7 +4,7 @@ import Card from "./Card";
 function ResultCard(props) {
     const resultElement = useRef()
     const { results } = props;
-
+    console.log(results)
     //** SCROLLEN **
     const ref = useRef(null);
     const scroll = (scrollOffset) => {
@@ -22,7 +22,7 @@ function ResultCard(props) {
 
     //**SÖKRESULTATET */
     //om vi inte söker nåt, dölj sökresultatet
-    if (results.length === 0) {
+    if (results?.length === 0) {
         return <div className="none" ></div>
 
     } else {
