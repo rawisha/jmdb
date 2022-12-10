@@ -179,7 +179,7 @@ const Banner = () => {
                     {truncate(movie?.overview, 150) || truncate(defaultMovie.overview, 150)}
                 </p>
                 <div className='banner-information-button'>
-                    <Link className='link-style' to={'/movie/' + movie?.tmdb_id + '-' + movie?.title?.replace(' ', '-')} state={{movieID:movie.imdb_id}}><button className='banner-button'><i className="fa fa-play" aria-hidden="true"></i>Play</button></Link> 
+                    <Link className='link-style' to={'/movie/' + movie?.tmdb_id + '-' + movie?.title?.replace(' ', '-')} state={{movieID:movie?.imdb_id}}><button className='banner-button'><i className="fa fa-play" aria-hidden="true"></i>Play</button></Link> 
                     <button onClick={() => handleTrailer(movie?.imdb_id || defaultMovie?.id)} className='banner-button'><i className="fa fa-play" aria-hidden="true"></i>{playtext}</button>
                     <button onClick={() => handleFavClick(movie || defaultMovie)} className='banner-button'><i className={heartStatusClasses} aria-hidden="true"></i>Favorite</button>
                     

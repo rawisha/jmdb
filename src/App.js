@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import "./styles/Modal.css"
 import './App.css';
 import NotFound from './components/NotFound';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from './components/Home';
 import Favorites from './components/Favorites';
 import Modal from 'react-modal';
@@ -15,6 +15,7 @@ import Signup from './components/Signup';
 import { auth } from './components/firebase';
 import { useDispatch, useSelector } from 'react-redux';
 import {login, logout, selectUser} from './features/userSlice'
+import { Navigate, useNavigate } from 'react-router';
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 const base_url = "https://image.tmdb.org/t/p/w200/";
@@ -90,6 +91,8 @@ export default function App() {
       toggleYT()
     }
   }
+
+  
 
   //styr om vad det ska stå på play trailer knappen
   let playtext;
@@ -196,28 +199,7 @@ export default function App() {
   }
 
   //in i MovieModal funktionen skickar vi vår movieData och vår baseurl
-  const MovieModal = ({ mData, base_url }) => {
 
-    return (
-      <>
-        <div className="modal-container">
-          <i onClick={closeModal} className="fa fa-times"></i>
-          <div className="modal-image-container">
-            <img className="modal-image" src={base_url + mData.poster} alt="" />
-          </div>
-          <div className="modal-info-container">
-            <h1 className="modal-info-title">{mData.title || mData.name || mData.original_name}</h1>
-            <h2 className="modal-info-info">{mData.release_date} {mData.first_air_date}<i className="fa fa-star fa-xs"></i>{mData.vote_average}</h2>
-            <p>{mData.overview}</p>
-            <div className="modal-buttons-container">
-              <button onClick={() => handleTrailer(mData)}><i className="fa fa-play" aria-hidden="true"></i>{playtext}</button>
-            </div>
-          </div>
-          <div className='youtubePlayer'><YouTube className={youtubeClassName} videoId={trailerUrl} opts={opt} /></div>
-        </div>
-      </>
-    )
-  }
 
   // ** SIDAN **
   //providern wrappar de komponenter som ska kunna använda vår globala kontext
@@ -225,17 +207,7 @@ export default function App() {
     
     <FavContext.Provider value={favContextValues} >
       
-      <div>
-        {/* Modalen är ett "paket" till react */}
-        <Modal
-          isOpen={modalIsOpen}
-          onRequestClose={closeModal}
-          className='Modal'
-          overlayClassName="Overlay"
-        >
-          <MovieModal mData={movieModal} base_url={base_url} />
-        </Modal>
-      </div>
+      
       
       
       <Router>

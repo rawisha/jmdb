@@ -48,10 +48,22 @@ const Card = ({ movieData, removeOnly }) => {
     return (
         <div >
             <div className='card 'key={movieData.id}>
-                <div className='card-image-container'>
+            {movieData.tv_id ?  
+            <div className='card-image-container'>
+                <Link className='link-style' to={'/serie/' + movieData.tv_id + '-' + movieData.title.replace(' ', '-')} state={{tvID:movieData.tv_id, tvInfo:movieData}}>
                     <img src={imgsrc} alt={"Movie & Tv show poster name" + movieData?.name || movieData?.title || movieData.original_name} className='card-image' onClick={() => favContext.handleModelClick(movieData)} />
+                    </Link> 
                     <i id="heart" onClick={() => handleFavClick(movieData)} className={heartStatusClasses} aria-hidden="true"></i>
                 </div>
+                    : 
+                    <div className='card-image-container'>
+                        <Link className='link-style' to={'/movie/' + movieData.tmdb_id + '-' + movieData.title.replace(' ', '-')} state={{movieID:movieData.imdb_id}}>
+                    <img src={imgsrc} alt={"Movie & Tv show poster name" + movieData?.name || movieData?.title || movieData.original_name} className='card-image' onClick={() => favContext.handleModelClick(movieData)} />
+                    </Link>
+                    <i id="heart" onClick={() => handleFavClick(movieData)} className={heartStatusClasses} aria-hidden="true"></i>
+                    </div>}
+
+                
                 <div className='card-text-container' >
 
                     {movieData.tv_id ?  <Link className='link-style' to={'/serie/' + movieData.tv_id + '-' + movieData.title.replace(' ', '-')} state={{tvID:movieData.tv_id, tvInfo:movieData}}>
@@ -59,9 +71,7 @@ const Card = ({ movieData, removeOnly }) => {
                     
                     </Link> : <Link className='link-style' to={'/movie/' + movieData.tmdb_id + '-' + movieData.title.replace(' ', '-')} state={{movieID:movieData.imdb_id}}>
                     <h3 className='card-text-title'>{movieData?.name || movieData?.title || movieData.original_name}</h3>
-                    
                     </Link> }
-                
                     <div className='card-text-dv'>
                         <h3 className='date'>{movieData.release_date ? movieData.release_date.substring(0, 4) : movieData.first_air_date ? movieData.first_air_date.substring(0, 4) : "-"}</h3>
                         <h3 className='vote'>{movieData.vote_average}<i id="Star-logo" className="fa fa-star fa-xs" aria-hidden="true"></i></h3>

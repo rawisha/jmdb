@@ -8,12 +8,19 @@ function SeriesPage() {
     const location = useLocation()
     const {tvID} = location.state
     const {tvInfo} = location.state
+    const vid = tvInfo.s1Video720 ||  tvInfo.s2Video720 || tvInfo.s3Video720 || tvInfo.s4Video720
+    let defaultPlayUrl = "https://s3.wasabisys.com/s1account/" + vid
     const [newData, setNewData] = useState([])
-    const [playUrl, setPlayUrl] = useState()
+    const [playUrl, setPlayUrl] = useState(defaultPlayUrl)
+
+    
     const [num,setNum] = useState(1)
     const url = `https://admin.wonulla.to/series/?tv_id=${tvID}&_limit=0`
     
     const tvData = Object.keys(newData)
+    
+
+
     useEffect(() => {
         async function getShit() {
             const res = await fetch(url)
@@ -29,10 +36,10 @@ function SeriesPage() {
         const newData = []
         data.map(rawData => {
             const season = 'Season ' + rawData.seasonNumber
-            const domain = rawData.s1Domain || rawData.s2Domain || rawData.s3Domain
-            const bucket = rawData.s1Bucket || rawData.s2Bucket || rawData.s3Bucket
-            const video720 = rawData.s1Video720 || rawData.s2Video720 || rawData.s3Video720
-            const video1080 = rawData.s1Video1080 || rawData.s2Video1080 || rawData.s3Video1080
+            const domain = rawData.s1Domain || rawData.s2Domain || rawData.s3Domain || rawData.s4Domain
+            const bucket = rawData.s1Bucket || rawData.s2Bucket || rawData.s3Bucket || rawData.s4Bucket
+            const video720 = rawData.s1Video720 || rawData.s2Video720 || rawData.s3Video720 || rawData.s4Video720
+            const video1080 = rawData.s1Video1080 || rawData.s2Video1080 || rawData.s3Video1080 || rawData.s4Video1080
             const video_url_720 = domain  + '/' + bucket + '/' + video720
             const video_url_1080 = domain  + '/' + bucket + '/' + video1080
             if ( ! (season in newData)) newData[season] = []
@@ -54,10 +61,11 @@ function SeriesPage() {
         })
         
         return newData
+        
     }
     
     
-   
+    
    
   return (
     <>

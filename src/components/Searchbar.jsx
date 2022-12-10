@@ -1,52 +1,56 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useRef } from "react";
 import "../styles/Searchbar.css";
 
 function Searchbar(props) {
   //vi tar ut de props vi behöver från props
   const { query, setResults, setQuery } = props;
+  const refQuery = useRef(null)
+  
+ 
+  async function doSearch() {
+    
+    //om det ej söks, sätt tomt state
+    if (!query) {
+      setResults([]);
+      return;
+    }
 
-  //useEffect körs automatiskt en gång
+    //vi sätter vår söklänk beroende på vad vi söker på (queryn)
+    const url = `https://wonulla.to/api/search?search=${query}`;
+  
+    //fetchar vårt sök
+    const res = await fetch(url);
+    
+    if (res.ok) {
+      const jsonRes = await res.json();
+      setResults(jsonRes);
+    } 
+  }
+ 
+  const handleSearchInput = e => {
+    setQuery(refQuery.current.value);
+  };
+  
   useEffect(() => {
     
-    async function doSearch() {
-      //om det ej söks, sätt tomt state
-      if (!query) {
-        setResults([]);
-        return;
-      }
-
-      //vi sätter vår söklänk beroende på vad vi söker på (queryn)
-      const url = `https://wonulla.to/api/search?search=${query}`;
-    
-      //fetchar vårt sök
-      const res = await fetch(url);
-      if (res.ok) {
-        const jsonRes = await res.json();
-        setResults(jsonRes);
-      } 
-    }
-    //kallar på sökfunktionen
-    doSearch();
-    //kör varje gång vårt query ändras
-  }, [query]);
-
-  //e.target.value = bokstäverna vi skriver när vi söker
-  const handleSearchInput = e => {
-    setQuery(e.target.value);
-  };
+    console.log(query)
+  },[query])
 
   return (
     <div className="searchbar-wrapper">
-      <i className="fa fa-search" aria-hidden="true"></i>
+      <i className="fa fa-search" aria-hidden="true" onClick={doSearch}></i>
+      <form>
       <input
         className="searchfield"
         type="text"
         placeholder="Search Movie here..."
+        ref = {refQuery}
         value={query}
-        onChange={e => handleSearchInput(e)}
+        onChange={handleSearchInput}
       />
-      {/*varje gång vi skriver nåt (onChange) startar funktionen som hanterar input */}
+      </form>
     </div>
+    
   );
 }
 
