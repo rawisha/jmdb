@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 const Header = (props) => {
   const [query, setQuery] = useState("");
   let navigate = useNavigate();
+  console.log(props)
 
   return (
     <div className='header'>

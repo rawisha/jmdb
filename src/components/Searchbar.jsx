@@ -22,8 +22,7 @@ function Searchbar(props) {
       const res = await fetch(url);
       if (res.ok) {
         const jsonRes = await res.json();
-        console.log(jsonRes)
-        setResults(jsonRes.results);
+        setResults(jsonRes);
       } 
     }
     //kallar på sökfunktionen
