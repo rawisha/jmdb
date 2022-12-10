@@ -4,7 +4,7 @@ import Card from "./Card";
 function ResultCard(props) {
     const resultElement = useRef()
     const { results } = props;
-    console.log(results)
+    
     //** SCROLLEN **
     const ref = useRef(null);
     const scroll = (scrollOffset) => {
