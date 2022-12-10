@@ -11,7 +11,7 @@ const base_url = "https://image.tmdb.org/t/p/w200";
 
 //** FILMKORTEN ** 
 const Card = ({ movieData, removeOnly }) => {
-   
+   console.log(movieData.id)
     //läser in vårt globala kontext
     const favContext = useContext(FavContext)
     //vi kollar statusen på favorite globalt och tar in den
@@ -47,7 +47,7 @@ const Card = ({ movieData, removeOnly }) => {
 
     return (
         <div >
-            <div className='card '>
+            <div className='card 'key={movieData.id}>
                 <div className='card-image-container'>
                     <img src={imgsrc} alt={"Movie & Tv show poster name" + movieData?.name || movieData?.title || movieData.original_name} className='card-image' onClick={() => favContext.handleModelClick(movieData)} />
                     <i id="heart" onClick={() => handleFavClick(movieData)} className={heartStatusClasses} aria-hidden="true"></i>
