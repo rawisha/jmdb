@@ -11,7 +11,7 @@ const base_url = "https://image.tmdb.org/t/p/w200";
 
 //** FILMKORTEN ** 
 const Card = ({ movieData, removeOnly }) => {
-   console.log(movieData.id)
+   
     //läser in vårt globala kontext
     const favContext = useContext(FavContext)
     //vi kollar statusen på favorite globalt och tar in den
