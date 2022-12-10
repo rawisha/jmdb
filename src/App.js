@@ -5,14 +5,19 @@ import NotFound from './components/NotFound';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from './components/Home';
 import Favorites from './components/Favorites';
-import Contact from './components/Contact';
 import Modal from 'react-modal';
 import classNames from 'classnames'
 import YouTube from 'react-youtube'
 import axios from './components/axios'
+import SeriesPage from './components/SeriesPage';
+import MoviePage from './components/MoviePage';
+import Signup from './components/Signup';
+import { auth } from './components/firebase';
+import { useDispatch, useSelector } from 'react-redux';
+import {login, logout, selectUser} from './features/userSlice'
+
 const API_KEY = process.env.REACT_APP_API_KEY;
 const base_url = "https://image.tmdb.org/t/p/w200/";
-
 Modal.setAppElement('#root');
 //skapar vårt globala kontext
 export const FavContext = React.createContext();
@@ -28,6 +33,28 @@ export default function App() {
   const [windowDimensions, setWindowDimensions] = useState(
     getWindowDimensions()
   );
+  const user = useSelector(selectUser);
+  const dispatch = useDispatch()
+
+
+  // use Auth checker
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((userAuth) => {
+      if(userAuth) {
+        console.log(userAuth)
+        dispatch(login({
+          uid: userAuth.uid,
+          email: userAuth.email,
+        }))
+      }else {
+        // Logged out
+        dispatch(logout)
+      }
+    })
+
+    return unsubscribe
+  },[])
 
 
   //** TRAILER **
@@ -176,7 +203,7 @@ export default function App() {
         <div className="modal-container">
           <i onClick={closeModal} className="fa fa-times"></i>
           <div className="modal-image-container">
-            <img className="modal-image" src={base_url + mData.poster_path} alt="" />
+            <img className="modal-image" src={base_url + mData.poster} alt="" />
           </div>
           <div className="modal-info-container">
             <h1 className="modal-info-title">{mData.title || mData.name || mData.original_name}</h1>
@@ -195,7 +222,9 @@ export default function App() {
   // ** SIDAN **
   //providern wrappar de komponenter som ska kunna använda vår globala kontext
   return (
-    <FavContext.Provider value={favContextValues}>
+    
+    <FavContext.Provider value={favContextValues} >
+      
       <div>
         {/* Modalen är ett "paket" till react */}
         <Modal
@@ -207,15 +236,27 @@ export default function App() {
           <MovieModal mData={movieModal} base_url={base_url} />
         </Modal>
       </div>
-      {/*Routes fungerar ung som länkar till olika sidorna, path = endpointsen, element = sidkomponenten */}
+      
+      
       <Router>
+        {!user ? (
+          <Signup />
+        ):
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/favorites' element={<Favorites />} />
-          <Route path='/contact' element={<Contact />} />
+          <Route path='/serie/:id' element={<SeriesPage />} />
+          <Route path='/movie/:id' element={<MoviePage />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
+        
+        }
+        
+        
       </Router>
-    </FavContext.Provider>
+      
+      
+      </FavContext.Provider>
+      
   );
 }

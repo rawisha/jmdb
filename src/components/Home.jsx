@@ -15,12 +15,8 @@ const Home = () => {
             <Header results={results} setResults={setResults} />
             <Banner />
             <ResultCard results={results} />
-            <Row title="Trending" fetchURL={requests.fetchTrending} />
-            <Row title="Action" fetchURL={requests.fetchActionMovies} />
-            <Row title="Romance" fetchURL={requests.fetchRomanceMovies} />
-            <Row title="Horror" fetchURL={requests.fetchHorrorMovies} />
-            <Row title="Comedy" fetchURL={requests.fetchComedyMovies} />
-            <Row title="Documentary" fetchURL={requests.fetchDocumentaries} />
+            <Row title="Series" fetchURL={requests.fetchSeries} />
+            <Row title="Movies" fetchURL={requests.fetchMovies} />
             <Footer />
         </div>
     );

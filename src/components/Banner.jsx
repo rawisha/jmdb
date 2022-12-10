@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from 'react'
 import "../styles/Banner.css"
 import axios from './axios'
 import requests from './requests'
+import { Link } from 'react-router-dom'
 import { FavContext } from '../App'
 //classnamespaket, inbyggd typ "if" för klasser
 import classNames from 'classnames'
@@ -48,8 +49,9 @@ const Banner = () => {
     // ** BANNERN **
     //hämtar bilderna för bannern
     const fetchData = async () => {
-        const request = await axios.get(requests.fetchNetflixOriginals)
-        setMovie(request.data.results[Math.floor(Math.random() * request.data.results.length - 1)])
+        const request = await axios.get(requests.fetchMovies)
+        
+        setMovie(request?.data[Math.floor(Math.random() * request?.data?.length - 1)])
         return request
     }
 
@@ -95,7 +97,7 @@ const Banner = () => {
     //styr om vad det ska stå på play trailer knappen
     let playtext;
         if (trailerUrl === '') {
-            playtext = 'Play trailer'
+            playtext = 'Trailer'
         } else {
             playtext = 'Close trailer'
         }
@@ -109,7 +111,7 @@ const Banner = () => {
             height
         };
     }
-
+    
     //timer för att den inte ska köras hela tiden
     function debounce(fn, ms) {
         let timer
@@ -166,7 +168,7 @@ const Banner = () => {
         <header className="banner"
             style={{
                 backgroundSize: "cover",
-                backgroundImage: `url('https://image.tmdb.org/t/p/original/${movie?.backdrop_path || defaultMovie.backdrop_path}')`,
+                backgroundImage: `url('https://image.tmdb.org/t/p/original${movie?.backdrop || defaultMovie.backdrop_path}')`,
                 backgroundPosition: "center center",
             }}
         >
@@ -177,8 +179,10 @@ const Banner = () => {
                     {truncate(movie?.overview, 150) || truncate(defaultMovie.overview, 150)}
                 </p>
                 <div className='banner-information-button'>
-                    <button onClick={() => handleTrailer(movie?.id || defaultMovie?.id)} className='banner-button'><i className="fa fa-play" aria-hidden="true"></i>{playtext}</button>
+                    <Link className='link-style' to={'/movie/' + movie?.tmdb_id + '-' + movie?.title?.replace(' ', '-')} state={{movieID:movie.imdb_id}}><button className='banner-button'><i className="fa fa-play" aria-hidden="true"></i>Play</button></Link> 
+                    <button onClick={() => handleTrailer(movie?.imdb_id || defaultMovie?.id)} className='banner-button'><i className="fa fa-play" aria-hidden="true"></i>{playtext}</button>
                     <button onClick={() => handleFavClick(movie || defaultMovie)} className='banner-button'><i className={heartStatusClasses} aria-hidden="true"></i>Favorite</button>
+                    
                 </div>
                 <div className="player__container">
                     <YouTube className={youtubeClassName} videoId={trailerUrl} opts={opt} />

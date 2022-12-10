@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import "../styles/Searchbar.css";
-const API_KEY = process.env.REACT_APP_API_KEY;
 
 function Searchbar(props) {
   //vi tar ut de props vi behöver från props
@@ -8,6 +7,11 @@ function Searchbar(props) {
 
   //useEffect körs automatiskt en gång
   useEffect(() => {
+    const headers = {
+      domain: 'wonulla.to',
+      Origin: 'wonulla.to',
+      Referer: 'wonulla.to'
+    }
     async function doSearch() {
       //om det ej söks, sätt tomt state
       if (!query) {
@@ -16,12 +20,13 @@ function Searchbar(props) {
       }
 
       //vi sätter vår söklänk beroende på vad vi söker på (queryn)
-      const url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${query}&page=1&include_adult=false`;
+      const url = `https://wonulla.to/api/search?search=${query}`;
     
       //fetchar vårt sök
-      const res = await fetch(url);
+      const res = await fetch(url,headers);
       if (res.ok) {
         const jsonRes = await res.json();
+        console.log(jsonRes)
         setResults(jsonRes.results);
       } 
     }
