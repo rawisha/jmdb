@@ -9,7 +9,7 @@ import requests from './requests';
 
 const Home = () => {
     const [results, setResults] = useState([]);
-
+    console.log(results)
     return (
         <div className='app'>
             <Header results={results} setResults={setResults} />

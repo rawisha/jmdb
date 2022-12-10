@@ -4,7 +4,8 @@ import Card from "./Card";
 function ResultCard(props) {
     const resultElement = useRef()
     const { results } = props;
-    
+    console.log(props.results)
+    console.log("NOT PROP" + results)
     //** SCROLLEN **
     const ref = useRef(null);
     const scroll = (scrollOffset) => {
@@ -32,7 +33,7 @@ function ResultCard(props) {
                 <button className='btn__left' onClick={() => scroll(-270)}><i className="fa fa-angle-left"></i></button>
                 <h2 ref={resultElement} >Search Results</h2>
                 <div className='card-container' ref={ref} id="resultCard">
-                    {results?.map(movie => <Card key={movie._id} movieData={movie} />)}
+                    {results?.map(movie => <Card key={movie.imdb_id || movie.tmdb_id} movieData={movie} />)}
                 </div>
                 <button className='btn__right ' onClick={() => scroll(270)}><i className="fa fa-angle-right"></i></button>
             </div >
