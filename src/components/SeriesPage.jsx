@@ -88,7 +88,7 @@ function SeriesPage() {
                     <div className='season--border'>
                     <ul className='ul--Container'>
                         {tvData?.map((season,index) => {
-                            console.log(season,index)
+                            
                             return <li key={index} onClick={() => setNum(index + 1)}>{season}</li>
                         })}
                     </ul>

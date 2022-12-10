@@ -7,11 +7,7 @@ function Searchbar(props) {
 
   //useEffect körs automatiskt en gång
   useEffect(() => {
-    const headers = {
-      domain: 'wonulla.to',
-      Origin: 'wonulla.to',
-      Referer: 'wonulla.to'
-    }
+    
     async function doSearch() {
       //om det ej söks, sätt tomt state
       if (!query) {
@@ -23,10 +19,9 @@ function Searchbar(props) {
       const url = `https://wonulla.to/api/search?search=${query}`;
     
       //fetchar vårt sök
-      const res = await fetch(url,headers);
+      const res = await fetch(url);
       if (res.ok) {
         const jsonRes = await res.json();
-        console.log(jsonRes)
         setResults(jsonRes.results);
       } 
     }
