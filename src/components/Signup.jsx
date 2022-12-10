@@ -45,7 +45,7 @@ const Signup = ( ) => {
             <input ref={passwordRef} type='password' placeholder='Password'></input>
             <button type="submit" onClick={signIn}>Sign In</button>
             <h2> OR </h2>
-            <button type="submit" onClick={Signup}>Sign Up</button>
+            <button type="submit" onClick={register}>Sign Up</button>
         </form>
         </div>
     </div>
