@@ -3,12 +3,12 @@ import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 
 const firebaseConfig = {
-    apiKey: process.env.REACT_APP_apiKey,
-    authDomain: process.env.REACT_APP_authDomain,
-    projectId: process.env.REACT_APP_projectId,
-    storageBucket: process.env.REACT_APP_storageBucket,
-    messagingSenderId: process.env.REACT_APP_messagingSenderId,
-    appId: process.env.REACT_APP_appId
+    apiKey: process.env.apiKey,
+    authDomain: process.env.authDomain,
+    projectId: process.env.projectId,
+    storageBucket: process.env.storageBucket,
+    messagingSenderId: process.env.messagingSenderId,
+    appId: process.env.appId
   };
 
   const firebaseApp = firebase.initializeApp(firebaseConfig)
