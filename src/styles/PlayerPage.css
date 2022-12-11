@@ -139,3 +139,18 @@
 .active {
     border: 1px solid blue;
 }
+
+
+@media screen {
+    
+}
+
+@media screen and (max-width: 840px) {
+    .info--container {
+     width: 95%;
+    }
+    .player--wrapper {
+        width: 95%;
+        
+    }
+  }

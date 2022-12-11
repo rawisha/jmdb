@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState,useContext } from 'react'
 import { useLocation } from 'react-router-dom'
 import '../styles/PlayerPage.css'
 import ThePlayer from '../video/ThePlayer'
 import Header from './Header'
-
+import ResultCard from './ResultCard'
+import { FavContext } from '../App'
 function MoviePage() {
+    const favContext = useContext(FavContext)
     const location = useLocation()
     const {movieID} = location.state
     const [movieData, setMovieData] = useState()
     const [playUrl, setPlayUrl] = useState([])
+    const [results, setResults] = useState([]);
     const url = `https://admin.wonulla.to/movies/?imdb_id=${movieID}`
 
     useEffect(() => {
@@ -51,12 +54,18 @@ function MoviePage() {
         getShit()
         
     },[])
+
+    useEffect(() => {
+
+    },[results])
    
   return (
     <>
-    <Header />
+    <Header results={results} setResults={setResults}/>
     <div className='Player--container' >
-        
+    <div className='result-Container'>
+                    <ResultCard results={results} />
+                </div>
         <div className='player--wrapper'>
             <ThePlayer urlData={playUrl}/>
         </div>

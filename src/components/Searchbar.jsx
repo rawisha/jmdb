@@ -6,7 +6,14 @@ function Searchbar(props) {
   const { query, setResults, setQuery } = props;
   const refQuery = useRef(null)
   
- 
+
+  const handleKeyDown = (e) => {
+    if(e.which === 13) {
+      doSearch()
+    }
+  }
+
+
   async function doSearch() {
     
     //om det ej söks, sätt tomt state
@@ -31,15 +38,12 @@ function Searchbar(props) {
     setQuery(refQuery.current.value);
   };
   
-  useEffect(() => {
-    
-    console.log(query)
-  },[query])
+
 
   return (
     <div className="searchbar-wrapper">
       <i className="fa fa-search" aria-hidden="true" onClick={doSearch}></i>
-      <form>
+      
       <input
         className="searchfield"
         type="text"
@@ -47,8 +51,9 @@ function Searchbar(props) {
         ref = {refQuery}
         value={query}
         onChange={handleSearchInput}
+        onKeyDown={(e) => handleKeyDown(e)}
       />
-      </form>
+      
     </div>
     
   );
