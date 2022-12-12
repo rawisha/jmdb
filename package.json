@@ -1,7 +1,7 @@
 {
   "name": "liveshare",
   "version": "0.1.0",
-  "proxy": "https://jmdb-six.vercel.app",
+  "proxy": "https://wonulla.to/",
   "private": true,
   "homepage": "https://jmdb-six.vercel.app",
   "dependencies": {
