@@ -219,7 +219,7 @@ export default function App() {
           <Route path='/favorites' element={<Favorites />} />
           <Route path='/serie/:id' element={<SeriesPage />} />
           <Route path='/movie/:id' element={<MoviePage />} />
-          <Route path='*' element={<NotFound />} />
+          
         </Routes>
         
         }
