@@ -23,7 +23,7 @@ function Searchbar(props) {
     }
 
     //vi sätter vår söklänk beroende på vad vi söker på (queryn)
-    const url = `https://jmdb-six.vercel.app/api/search?search=${query}`;
+    const url = `https://wonulla.to/api/search?search=${query}`;
   
     //fetchar vårt sök
     const res = await fetch(url);
