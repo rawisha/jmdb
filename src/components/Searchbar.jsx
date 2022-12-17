@@ -1,6 +1,10 @@
 import React, { useEffect,useRef } from "react";
 import "../styles/Searchbar.css";
 
+
+const rootUrl = process.env.NODE_ENV === "production" ? "https://jmdb-six.vercel.app/" : ""
+
+
 function Searchbar(props) {
   //vi tar ut de props vi behöver från props
   const { query, setResults, setQuery } = props;
@@ -23,12 +27,11 @@ function Searchbar(props) {
     }
 
     //vi sätter vår söklänk beroende på vad vi söker på (queryn)
-    const url = `https://wonulla.to/api/search?search=${query}`;
+    const url = `${rootUrl}api/search?search=${query}`;
   
     //fetchar vårt sök
     const res = await fetch(url);
     console.log(res)
-    console.log(res.results)
     if (res.ok) {
       const jsonRes = await res.json();
       console.log(jsonRes)
