@@ -4,7 +4,6 @@ import Card from "./Card";
 function ResultCard(props) {
     const resultElement = useRef()
     const { results } = props;
-    
     //** SCROLLEN **
     const ref = useRef(null);
     const scroll = (scrollOffset) => {
@@ -28,10 +27,10 @@ function ResultCard(props) {
     } else {
         //annars visa sökresultat
         return (
-            <div className='row'   >
+            <div className='row' >
                 <button className='btn__left' onClick={() => scroll(-270)}><i className="fa fa-angle-left"></i></button>
                 <h2 ref={resultElement} >Search Results</h2>
-                <div className='card-container' ref={ref} id="resultCard">
+                <div className='card-container' ref={ref} id="resultCard" >
                     {results.map(movie => <Card key={movie.id} movieData={movie} />)}
                 </div>
                 <button className='btn__right ' onClick={() => scroll(270)}><i className="fa fa-angle-right"></i></button>
