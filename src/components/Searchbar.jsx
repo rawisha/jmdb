@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import "../styles/Searchbar.css";
 
 
@@ -14,6 +14,12 @@ function Searchbar(props) {
     }
   }
 
+
+  useEffect(()=> {
+    fetch('api/search?search=weird')
+    .then(response => response.json())
+    .then(section => console.log(section))
+  },[])
 
   async function doSearch() {
     
