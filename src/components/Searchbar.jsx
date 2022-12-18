@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import "../styles/Searchbar.css";
 
 
-const rootUrl = process.env.NODE_ENV === "production" ? "https://jmdb-3jyvdmo59-rawisha.vercel.app/" : ""
+const rootUrl = process.env.NODE_ENV === "production" ? `${process.env.REACT_APP_PROXY}` : ""
 
 
 function Searchbar(props) {
