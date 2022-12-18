@@ -26,6 +26,7 @@
     "react-scripts": "^5.0.0",
     "react-youtube": "^7.14.0",
     "redux": "^4.2.0",
+    "request": "^2.88.2",
     "state-pool": "^0.7.1",
     "web-vitals": "^2.1.4"
   },
