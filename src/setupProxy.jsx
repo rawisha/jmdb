@@ -11,14 +11,17 @@ app.use((req, res, next) => {
 
 app.get('/api', (req, res) => {
   request(
-    { url: 'https://wonulla.to' },
+    { url: 'https://wonulla.to/' },
     (error, response, body) => {
       if (error || response.statusCode !== 200) {
         return res.status(500).json({ type: 'error', message: err.message });
       }
+
 
       res.json(JSON.parse(body));
     }
   )
 });
 
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`listening on ${PORT}`));

@@ -31,15 +31,7 @@ function Searchbar(props) {
     const url = `api/search?search=${query}`;
   
     //fetchar vårt sök
-    const res = await fetch(url, {
-      headers: {
-        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzBkZTdhNjU1MzlkMTlhZDIyMTFmNCIsImlhdCI6MTY2OTk1NTc3MywiZXhwIjoxNjcyNTQ3NzczfQ.Sb33AtcYjYZwKozkwQe-vVlENhjcHuQFyy-CU0lU3WI',
-        'Accept': 'application/json, text/plain, */',
-        'Host': 'wonulla.to',
-        'Referer': 'https://wonulla.to/',
-        'Sec-Fetch-Site': 'same-origin'
-      }
-    });
+    const res = await fetch(url);
     
     if (res.ok) {
       const jsonRes = await res.json();
