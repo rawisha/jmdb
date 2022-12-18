@@ -17,7 +17,7 @@ function Searchbar(props) {
 
   useEffect(()=> {
     fetch('api/search?search=weird')
-    .then(response => response.json())
+    .then(response => console.log(response))
     .then(section => console.log(section))
   },[])
 
