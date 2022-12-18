@@ -2,9 +2,6 @@ import React, { useRef } from "react";
 import "../styles/Searchbar.css";
 
 
-const rootUrl = process.env.NODE_ENV === "production" ? `${process.env.REACT_APP_PROXY}` : ""
-
-
 function Searchbar(props) {
   //vi tar ut de props vi behöver från props
   const { query, setResults, setQuery } = props;
@@ -27,7 +24,7 @@ function Searchbar(props) {
     }
 
     //vi sätter vår söklänk beroende på vad vi söker på (queryn)
-    const url = `${rootUrl}api/search?search=${query}`;
+    const url = `api/search?search=${query}`;
   
     //fetchar vårt sök
     const res = await fetch(url);
