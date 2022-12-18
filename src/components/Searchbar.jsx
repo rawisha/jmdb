@@ -1,8 +1,8 @@
-import React, { useEffect,useRef } from "react";
+import React, { useRef } from "react";
 import "../styles/Searchbar.css";
 
 
-const rootUrl = process.env.NODE_ENV === "production" ? "https://wonulla.to/" : ""
+const rootUrl = process.env.NODE_ENV === "production" ? "https://jmdb-3jyvdmo59-rawisha.vercel.app/" : ""
 
 
 function Searchbar(props) {
@@ -31,10 +31,10 @@ function Searchbar(props) {
   
     //fetchar vårt sök
     const res = await fetch(url);
-    console.log(res)
+    
     if (res.ok) {
       const jsonRes = await res.json();
-      console.log(jsonRes)
+      
       setResults(jsonRes);
     } 
   }

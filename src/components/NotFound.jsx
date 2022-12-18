@@ -14,7 +14,7 @@ const NotFound = () => {
                 <button onClick={() => { navigate("/") }}>Fly back to home</button>
             </div>
             <div className='error-image-container'>
-                <img src={HarryPotter} />
+                <img src={HarryPotter} alt="Not found harry potter broom"/>
             </div>
         </section>  
     )
