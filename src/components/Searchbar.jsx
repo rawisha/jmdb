@@ -19,7 +19,7 @@ function Searchbar(props) {
  
 
 
-  async function doSearch() {cors()
+  async function doSearch() {
     
     //om det ej söks, sätt tomt state
     if (!query) {
@@ -31,7 +31,14 @@ function Searchbar(props) {
     const url = `/api/search?search=${query}`;
   
     //fetchar vårt sök
-    const res = await fetch(url);
+    const res = await fetch(url, {
+      headers: {
+        "Accept": "application/json, text/plain, */*",
+        "Accept-Encoding": "gzip, deflate, br",
+        "Accept-Language": "en-US,en;q=0.5",
+        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzBkZTdhNjU1MzlkMTlhZDIyMTFmNCIsImlhdCI6MTY3MTQwODgxMCwiZXhwIjoxNjc0MDAwODEwfQ.UYq_lnzzeIZU1EptSHmU9lFOVd9BhBcWOAiYDVLZD9I"
+      }
+    });
     
     if (res.ok) {
       const jsonRes = await res.json();
