@@ -21,10 +21,10 @@ function MoviePage() {
             const apiInfo = await res.json()
             
             apiInfo.map(newInfo => {
-                const domain = newInfo.s1Domain || newInfo.s2Domain || newInfo.s3Domain
-                const bucket = newInfo.s1Bucket || newInfo.s2Bucket || newInfo.s3Bucket
-                const video720 = newInfo.s1Video720 || newInfo.s2Video720 || newInfo.s3Video720
-                const video1080 = newInfo.s1Video1080 || newInfo.s2Video1080 || newInfo.s3Video1080
+                const domain = newInfo.s1Domain || newInfo.s2Domain || newInfo.s3Domain || newInfo.s4Domain
+                const bucket = newInfo.s1Bucket || newInfo.s2Bucket || newInfo.s3Bucket || newInfo.s4Bucket
+                const video720 = newInfo.s1Video720 || newInfo.s2Video720 || newInfo.s3Video720 || newInfo.s4Video720
+                const video1080 = newInfo.s1Video1080 || newInfo.s2Video1080 || newInfo.s3Video1080 || newInfo.s4Video1080
                 const video_url_720 = domain  + '/' + bucket + '/' + video720
                 const video_url_1080 = domain  + '/' + bucket + '/' + video1080
                 const url_data = [
