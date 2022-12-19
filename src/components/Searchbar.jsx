@@ -28,17 +28,10 @@ function Searchbar(props) {
     }
 
     //vi sätter vår söklänk beroende på vad vi söker på (queryn)
-    const url = `/api/search?search=${query}`;
+    const url = `api/search?search=${query}`;
   
     //fetchar vårt sök
-    const res = await fetch(url, {
-      headers: {
-        "Accept": "application/json, text/plain, */*",
-        "Accept-Encoding": "gzip, deflate, br",
-        "Accept-Language": "en-US,en;q=0.5",
-        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzBkZTdhNjU1MzlkMTlhZDIyMTFmNCIsImlhdCI6MTY3MTQwODgxMCwiZXhwIjoxNjc0MDAwODEwfQ.UYq_lnzzeIZU1EptSHmU9lFOVd9BhBcWOAiYDVLZD9I"
-      }
-    });
+    const res = await fetch(url);
     
     if (res.ok) {
       const jsonRes = await res.json();
