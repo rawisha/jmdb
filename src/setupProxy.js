@@ -1,16 +1,23 @@
 const express = require('express');
 const { createProxyMiddleware } = require('http-proxy-middleware');
 const request = require('request');
-
+const cors = require('cors')
 const app = express();
 
 const pathFilter = function (path, req) {
   return path.match('^/api') && req.method === 'GET';
 };
 
+app.use(cors(
+  {
+    allowedHeaders: "*",
+    allowMethods: '*',
+    origin: '*'
+  }
+))
 
 const config = createProxyMiddleware({
-  target: "https://minimovie-c672b.web.app/",
+  target: "https://wonullta.to/",
   autoRewrite: true,
   changeOrigin: true,
   pathRewrite: {"^/api": ""},

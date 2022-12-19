@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import "../styles/Searchbar.css";
-const cors = require('cors')
+
 
 
 
