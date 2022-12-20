@@ -19,7 +19,7 @@ const Favorites = () => {
                     <ResultCard results={results} />
                 </div>
                 <div className='breadcrum2'>
-                <button className='header-item' onClick={() => { navigate("/") }}> -> Home</button> <p> / FAVORITES</p>
+                <button className='header-item' onClick={() => { navigate("/") }}>  Home</button> <p> / FAVORITES</p>
         </div>
                 <h1>Your Favorites</h1>
                 {/*vi vill se om det finns innehåll i favorites, finns ej printa h1 */}
