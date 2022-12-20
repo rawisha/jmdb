@@ -9,13 +9,13 @@ function SeriesPage() {
     const {tvID} = location.state
     const {tvInfo} = location.state
     const vid = tvInfo.s1Video720 ||  tvInfo.s2Video720 || tvInfo.s3Video720 || tvInfo.s4Video720
-    let defaultPlayUrl = "https://s3.wasabisys.com/s1account/" + vid
+    let defaultPlayUrl = process.env.REACT_APP_defaultplay + vid
     const [newData, setNewData] = useState([])
     const [playUrl, setPlayUrl] = useState(defaultPlayUrl)
 
     
     const [num,setNum] = useState(1)
-    const url = `https://admin.wonulla.to/series/?tv_id=${tvID}&_limit=0`
+    const url = `${process.env.REACT_APP_apitv}${tvID}&_limit=0`
     
     const tvData = Object.keys(newData)
     

@@ -5,6 +5,7 @@ import Card from './Card';
 
 const Row = ({ title, fetchURL }) => {
     const [movies, setMovies] = useState([]);
+
     
     //styr scroll höger/vänster
     const ref = useRef(null);

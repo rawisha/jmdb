@@ -12,7 +12,7 @@ function MoviePage() {
     const [movieData, setMovieData] = useState()
     const [playUrl, setPlayUrl] = useState([])
     const [results, setResults] = useState([]);
-    const url = `https://admin.wonulla.to/movies/?imdb_id=${movieID}`
+    const url = `${process.env.REACT_APP_apimovie}${movieID}`
 
     useEffect(() => {
 
