@@ -23,10 +23,10 @@ const Favorites = () => {
         </div>
                 <h1>Your Favorites</h1>
                 {/*vi vill se om det finns innehåll i favorites, finns ej printa h1 */}
-                {favContext.favorites.length === 0 && <h3 className='favorite-h3'>Oooops it´s empty here! Please add some movies</h3>}
+                {favContext.favorites?.length === 0 && <h3 className='favorite-h3'>Oooops it´s empty here! Please add some movies</h3>}
                 <div className='favorite-card-container'>
                     {/*om det finns innehåll i favContext mappa över */}
-                    {favContext.favorites.length > 0 && favContext.favorites.map(movie => <Card key={movie._id} movieData={movie} removeOnly />)}
+                    {favContext.favorites?.length > 0 && favContext.favorites?.map(movie => <Card key={movie._id} movieData={movie} removeOnly />)}
                 </div>
             </div >
             <Footer />

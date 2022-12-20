@@ -1,6 +1,7 @@
 import React,{useRef} from 'react'
-import { auth } from './firebase'
+import db, { auth } from './firebase'
 import '../styles/SignUp.css'
+import {setDoc,doc} from 'firebase/firestore'
 const Signup = ( ) => {
     const emailRef = useRef(null)
     const passwordRef = useRef(null)
@@ -13,7 +14,9 @@ const Signup = ( ) => {
             emailRef.current.value,
             passwordRef.current.value
         ).then((authUser) => {
-           
+           setDoc(doc(db, 'users', authUser.user.email), {
+            savedFavorites: []
+           })
 
         }).catch(error => {
             alert(error)

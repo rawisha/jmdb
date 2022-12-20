@@ -7,21 +7,36 @@ import Favorites from './components/Favorites';
 import SeriesPage from './components/SeriesPage';
 import MoviePage from './components/MoviePage';
 import Signup from './components/Signup';
-import { auth } from './components/firebase';
+import db ,{ auth} from './components/firebase';
 import { useDispatch, useSelector } from 'react-redux';
 import {login, logout, selectUser} from './features/userSlice'
-
+import {arrayUnion, doc, updateDoc,onSnapshot} from 'firebase/firestore'
 
 //skapar vårt globala kontext
 export const FavContext = React.createContext();
 
 export default function App() {
-  const initFavs = JSON.parse(localStorage.getItem('favs')) || []
-  const [favorites, setFavorites] = useState(initFavs)
+  
+  const [favorites, setFavorites] = useState([])
+  
   const user = useSelector(selectUser);
   const dispatch = useDispatch()
-
+  
   // use Auth checker
+  const dbUser = doc(db, 'users', `${user?.email}`)
+
+  const addToDb = async (movie) => {
+    await updateDoc(dbUser,{
+      savedFavorites: arrayUnion(movie)
+    })
+  } 
+
+  const removeFromDb = async (movieId) => {
+    const newData = favorites.filter((item) => item._id !== movieId)
+    await updateDoc(dbUser, {
+      savedFavorites: newData
+    })
+  }
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((userAuth) => {
@@ -40,13 +55,21 @@ export default function App() {
     return unsubscribe
   },[])
 
-
+  
 
   //** LOCAL STORAGE/FAVORITER **
   useEffect(() => {
-    localStorage.setItem("favs", JSON.stringify(favorites));
-  }, [favorites])
+    //localStorage.setItem("favs", JSON.stringify(favorites));
+  }, [])
 
+  useEffect(() => {
+    onSnapshot(doc(db, 'users', `${user?.email}`), (doc) => {
+      setFavorites(doc.data()?.savedFavorites)
+    })
+    
+  }, [user?.email])
+
+  
 
   //våra globala saker som vi samlar i ett objekt för att slippa skriva alla som value i providern
   const favContextValues = {
@@ -57,24 +80,22 @@ export default function App() {
     isFav(movieId) {
       
       //sök på filmens id
-      const index = favorites.findIndex(f => movieId === f._id)
+      const index = favorites?.findIndex(f => movieId === f._id)
       
       return (index === -1) ? false : true
     },
 
     //lägg till favorit
     addFav(movie) {
+      addToDb(movie)
       
-      //kopia och lägger in nya filmen
-      setFavorites([...favorites, movie])
+    
     },
 
     //radera favorit
     removeFav(movie) {
-      //vi tar bort allt som inte har id
-      const newFavs = favorites.filter(f => movie._id !== f._id)
-      //vi öppnar och uppdaterar med nya listan
-      setFavorites([...newFavs])
+    
+      removeFromDb(movie._id)
     },
   }
 
@@ -83,29 +104,25 @@ export default function App() {
   // ** SIDAN **
   //providern wrappar de komponenter som ska kunna använda vår globala kontext
   return (
-    
-    
-      
+
       <Router>
+
         {!user ? (
           <Signup />
         ):
         <FavContext.Provider value={favContextValues} >
         <Routes>
+
           <Route path='/' element={<Home />} />
           <Route path='/favorites' element={<Favorites />} />
           <Route path='/serie/:id' element={<SeriesPage />} />
           <Route path='/movie/:id' element={<MoviePage />} />
-          
+
         </Routes>
         </FavContext.Provider>
         }
         
-        
       </Router>
-      
-      
-      
       
   );
 }
