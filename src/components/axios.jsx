@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-    baseURL: "https://admin.wonulla.to",
+    baseURL: process.env.REACT_APP_baseurl,
 });
 
 export default instance;
