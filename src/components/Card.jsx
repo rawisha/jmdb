@@ -4,18 +4,18 @@ import classNames from 'classnames'
 import img from '../img/no-img.png'
 import "../styles/Card.css"
 import { Link } from 'react-router-dom'
-import { useParams } from 'react-router-dom'
-import PlayerPage from './SeriesPage'
+
 const base_url = "https://image.tmdb.org/t/p/w200";
 
 
 //** FILMKORTEN ** 
 const Card = ({ movieData, removeOnly }) => {
-   
+     
     //läser in vårt globala kontext
     const favContext = useContext(FavContext)
+    
     //vi kollar statusen på favorite globalt och tar in den
-    const [favStatus, setFavStatus] = useState(favContext.isFav(movieData.id))
+    const [favStatus, setFavStatus] = useState(favContext.isFav(movieData._id))
 
     
     //satt default till vår empty bild
@@ -47,7 +47,7 @@ const Card = ({ movieData, removeOnly }) => {
 
     return (
         <div >
-            <div className='card 'key={movieData.id}>
+            <div className='card 'key={movieData._id}>
             {movieData.tv_id ?  
             <div className='card-image-container'>
                 <Link className='link-style' to={'/serie/' + movieData.tv_id + '-' + movieData.title.replace(' ', '-')} state={{tvID:movieData.tv_id, tvInfo:movieData}}>
