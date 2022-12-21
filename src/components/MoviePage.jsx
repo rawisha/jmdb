@@ -1,13 +1,11 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import "../styles/PlayerPage.css";
 import ThePlayer from "../video/ThePlayer";
 import Header from "./Header";
 import ResultCard from "./ResultCard";
-import { FavContext } from "../App";
-import CastControls from "./CastControls";
+
 function MoviePage() {
-  const favContext = useContext(FavContext);
   const location = useLocation();
   const { movieID } = location.state;
   const [movieData, setMovieData] = useState();
@@ -64,7 +62,6 @@ function MoviePage() {
   }, []);
 
   useEffect(() => {}, [results]);
-  //<ThePlayer urlData={playUrl}/>
   return (
     <>
       <Header results={results} setResults={setResults} />
@@ -73,19 +70,7 @@ function MoviePage() {
           <ResultCard results={results} />
         </div>
         <div className="player--wrapper">
-          <video
-            style={{
-              position: "relative",
-              left: 0,
-              height: "100%",
-              width: "100%",
-            }}
-            id="vid"
-            src={playUrl}
-            autoPlay
-            controls={true}
-          />
-          <CastControls src={playUrl} />
+          <ThePlayer urlData={playUrl} />
         </div>
 
         <div className="info--container">

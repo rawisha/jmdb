@@ -1,18 +1,18 @@
 import React from "react";
 import "./ThePlayer.css";
-import ReactPlayer from "react-player";
-import Video from "../components/Videocomponent";
 export default function ThePlayer({ urlData }) {
   return (
     <div className="player-wrapper">
-      <ReactPlayer
-        className="react-player"
-        url={urlData}
-        width="100%"
-        height="100%"
+      <video
+        style={{
+          position: "relative",
+          left: 0,
+          height: "100%",
+          width: "100%",
+        }}
+        src={urlData}
+        autoPlay
         controls={true}
-        playing={false}
-        enableremovecontrols="true"
       />
     </div>
   );
