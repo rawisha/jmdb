@@ -1,21 +1,19 @@
-import React from 'react'
-import './ThePlayer.css'
-import ReactPlayer from 'react-player'
-export default function ThePlayer({urlData}) {
- 
-  
+import React from "react";
+import "./ThePlayer.css";
+import ReactPlayer from "react-player";
+import Video from "../components/Videocomponent";
+export default function ThePlayer({ urlData }) {
   return (
-    <div className='player-wrapper'>
-        <ReactPlayer
+    <div className="player-wrapper">
+      <ReactPlayer
         className="react-player"
         url={urlData}
-        
         width="100%"
         height="100%"
         controls={true}
         playing={false}
-        enableremovecontrols='true'
-        />
+        enableremovecontrols="true"
+      />
     </div>
-  )
+  );
 }

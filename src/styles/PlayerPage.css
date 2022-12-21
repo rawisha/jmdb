@@ -21,6 +21,7 @@
 .overview--container {
     display: flex;
     justify-content: center;
+    max-width: 90%;
 }
 
 .info--container {
